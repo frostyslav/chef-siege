@@ -9,49 +9,50 @@ Requirements
 - RedHat-family Linux Distributions
 
 ### Cookbooks
+- Depends on `checkinstall` cookbook
 - When running on Rhel based systems, the node must include the `yum-epel` cookbook
 
 Attributes
 ----------
 ### Recommended tunables
 
-* `siege[:install_method]`
+* `siege['install_method']`
   - String. Defaults to `source`. Can be `source` or `package`
   - `source` downloads source codes and compile them, then executes checkinstall to install as package
   - `package` installs package from the existing repo via apt or yum, depending on the distribution
 
-* `siege[:url]`
+* `siege['url']`
   - String. Points to the siege source codes archive location
 
-* `siege[:version]`
+* `siege['version']`
   - String. Siege version to be compiled
 
-* `siege[:checksum]`
+* `siege['checksum']`
   - String. Source codes archive checksum
 
 ### Source specific
 
-* `siege[:prefix_dir]`
+* `siege['prefix_dir']`
   - String. The path to prefix dir
   - Defaults to `/`
 
-* `siege[:exec_prefix_dir]`
+* `siege['exec_prefix_dir']`
   - String. The path to exec_prefix dir
   - Defaults to `/usr`
 
-* `siege[:config_dir]`
+* `siege['config_dir']`
   - String. The path to configuration file dir
   - Defaults to `/etc/siege`
 
-* `siege[:doc_dir]`
+* `siege['doc_dir']`
   - String. The path to docs dir
   - Defaults to `/usr/share/info`
 
-* `siege[:man_dir]`
+* `siege['man_dir']`
   - String. The path man files dir
   - Defaults to `/usr/share/man`
 
-* `siege[:man_dir]`
+* `siege['man_dir']`
   - Array. The configuration options to be included during compilation
 
 Usage

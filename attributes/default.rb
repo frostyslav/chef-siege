@@ -18,26 +18,26 @@
 # limitations under the License.
 #
 
-default[:siege][:install_method] = "source"
+default['siege']['install_method'] = "source"
 
 # Used for source installation
-default[:siege][:url] = "http://www.joedog.org/pub/siege"
-default[:siege][:version] = "3.0.6"
-default[:siege][:checksum] = "78b79964e3d6772e532c6008a084700f830a02a00ca80b44f3e71380b4908c5b"
+default['siege']['url'] = "http://www.joedog.org/pub/siege"
+default['siege']['version'] = "3.0.6"
+default['siege']['checksum'] = "78b79964e3d6772e532c6008a084700f830a02a00ca80b44f3e71380b4908c5b"
 
-default[:siege][:prefix_dir] = "/"
-default[:siege][:exec_prefix_dir] = "/usr"
-default[:siege][:config_dir] = "/etc/siege"
-default[:siege][:doc_dir] = "/usr/share"
-default[:siege][:include_dir] = "/usr/include"
-default[:siege][:info_dir] = "/usr/share/info"
-default[:siege][:man_dir] = "/usr/share/man"
-default[:siege][:configure_options] = %w{
---prefix=#{siege[:prefix_dir]}
---exec-prefix=#{siege[:exec_prefix_dir]}
---sysconfdir=#{siege[:config_dir]}
---datarootdir=#{siege[:doc_dir]}
---includedir=#{siege[:include_dir]}
---infodir=#{siege[:info_dir]}
---mandir=#{siege[:man_dir]}
+default['siege']['prefix_dir'] = "/"
+default['siege']['exec_prefix_dir'] = "/usr"
+default['siege']['config_dir'] = "/etc/siege"
+default['siege']['doc_dir'] = "/usr/share"
+default['siege']['include_dir'] = "/usr/include"
+default['siege']['info_dir'] = "/usr/share/info"
+default['siege']['man_dir'] = "/usr/share/man"
+default['siege']['configure_options'] = %w{
+--prefix=#{siege['prefix_dir']}
+--exec-prefix=#{siege['exec_prefix_dir']}
+--sysconfdir=#{siege['config_dir']}
+--datarootdir=#{siege['doc_dir']}
+--includedir=#{siege['include_dir']}
+--infodir=#{siege['info_dir']}
+--mandir=#{siege['man_dir']}
 }

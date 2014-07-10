@@ -18,22 +18,4 @@
 # limitations under the License.
 #
 
-case node[:platform]
-  when "debian", "ubuntu"
-    node.default[:checkinstall][:options] = "-y"
-    node.default[:version_check][:command] = "dpkg -s siege"
-    %w{g++ checkinstall}.each do |pkg|
-      package pkg do
-        action :install
-      end
-    end
-  when "redhat", "centos", "amazon", "scientific"
-    node.default[:checkinstall][:options] = "-R -y --install=yes"
-    node.default[:version_check][:command] = "rpm -qi siege"
-    %w{gcc-c++ checkinstall}.each do |pkg|
-      package pkg do
-        action :install
-      end
-end
-
-include_recipe "siege::#{node[:siege][:install_method]}"
+include_recipe "siege::#{node['siege']['install_method']}"

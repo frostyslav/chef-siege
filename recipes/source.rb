@@ -18,36 +18,14 @@
 # limitations under the License.
 #
 
-version = node[:siege][:version]
-install_path = "#{node[:siege][:exec_prefix_dir]}/bin/siege"
-
-remote_file "#{Chef::Config[:file_cache_path]}/siege-#{version}.tar.gz" do
-  source "#{node[:siege][:url]}/siege-#{version}.tar.gz"
-  checksum node[:siege][:checksum]
+remote_file "#{Chef::Config['file_cache_path']}/siege-#{node['siege']['version']}.tar.gz" do
+  source "#{node['siege']['url']}/siege-#{node['siege']['version']}.tar.gz"
+  checksum node['siege']['checksum']
   mode 00644
 end
 
-configure_options = node[:siege][:configure_options].join(" ")
-siege_install = false
-
-if File.exists?(install_path)
-  cmd = Mixlib::ShellOut.new(node[:version_check][:command])
-  cmd.run_command
-  matches = cmd.stdout.downcase.squeeze(' ').match(/version\s?: ([0-9\.]+)/)
-  current_version = matches[1]
-  if Gem::Version.new(version) > Gem::Version.new(current_version)
-    siege_install = true
-  end
-else
-  siege_install = true
-end
-
-bash "build-and-install-siege" do
-  cwd Chef::Config[:file_cache_path]
-  code <<-EOF
-  tar zxvf siege-#{version}.tar.gz
-  (cd siege-#{version} && ./configure #{configure_options})
-  (cd siege-#{version} && make && checkinstall #{node[:checkinstall][:options]})
-  EOF
-  not_if { siege_install == false }
+checkinstall_package "siege" do
+  source_archive "#{Chef::Config['file_cache_path']}/siege-#{node['siege']['version']}.tar.gz"
+  configure_options node['siege']['configure_options']
+  version node['siege']['version']
 end
