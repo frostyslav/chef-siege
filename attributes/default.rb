@@ -21,9 +21,9 @@
 default['siege']['install_method'] = "source"
 
 # Used for source installation
-default['siege']['url'] = "http://www.joedog.org/pub/siege"
-default['siege']['version'] = "3.0.6"
-default['siege']['checksum'] = "78b79964e3d6772e532c6008a084700f830a02a00ca80b44f3e71380b4908c5b"
+default['siege']['url'] = "http://download.joedog.org/siege"
+default['siege']['version'] = "3.0.7"
+default['siege']['checksum'] = "c651e2ae871cc680eb375f128b4809e97ceecf367f6bd65c3df00603fbceed4e"
 
 default['siege']['prefix_dir'] = "/"
 default['siege']['exec_prefix_dir'] = "/usr"
